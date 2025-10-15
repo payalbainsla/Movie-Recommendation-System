@@ -6,17 +6,13 @@ A smart web-based application that suggests movies based on user preferences, ge
 
 --------------------------------------
 
-## 📸 Screenshots
-
-![Homepage](link-to-screenshot1)
-![Recommendations](link-to-screenshot2)
 
 ## 🧰 Tech Stack
 
 - **Frontend:** HTML, CSS, JavaScript *(or React if used)*
-- **Backend:** fest API
+- **Backend:** Fast API
 - **Database:** MySQL
-- **Recommendation Logic:** Content-based filtering / Collaborative filtering *(whichever you used)*
+- **Recommendation Logic:** Content-based filtering
 
 ## 🛠️ Features
 
