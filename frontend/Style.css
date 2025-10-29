@@ -1,0 +1,133 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: maroon;
+}
+
+/* Navigation Bar */
+nav {
+  height: 60px;
+  width: 100%;
+  background-color: rgb(36, 17, 17);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+}
+
+#moviename {
+  color: #fff;
+  padding-left: 40px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+ul li {
+  padding: 0 30px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+a:hover {
+  color: maroon;
+}
+
+/* Hero Section */
+.heroSection {
+  padding-top: 80px;
+  height: auto;
+  background-color: #fff;
+  text-align: center;
+  padding-bottom: 60px;
+}
+
+.hero-container input {
+  padding: 10px;
+  margin: 10px;
+  width: 250px;
+  border-radius: 5px;
+  border: 1px solid #555;
+}
+
+.hero-container .btn {
+  padding: 10px 20px;
+  background: maroon;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.hero-container .btn:hover {
+  background: rgb(90, 20, 20);
+}
+
+/* Movie Cards */
+.recommendations {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 30px;
+  gap: 20px;
+}
+
+.movie-card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  width: 150px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.movie-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.movie-card h3 {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* Footer */
+footer {
+  background-color: #1a1a1a;
+  color: #d4af37;
+  padding: 40px 0 10px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  flex: 1 1 220px;
+  margin: 10px 20px;
+}
+
+.footer-section h3 {
+  color: #d4af37;
+  margin-bottom: 12px;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 10px;
+  color: #d4af37;
+}
