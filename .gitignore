@@ -1,0 +1,20 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Environment folder
+env/
+venv/
+ENV/
+
+# VS Code settings
+.vscode/
+
+# OS files
+.DS_Store
+
+# Large files
+*.pkl
+
+# Other temporary files
+*.log
