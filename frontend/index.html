@@ -7,28 +7,33 @@
     <link rel="stylesheet" href="Style.css">
 </head>
 <body>
+    <!-- ===== NAVBAR ===== -->
     <nav class="nav">
         <h1 id="moviename">MovieMate</h1>
         <ul>
-            <li><a href="#">Home</a></li>
+            <li><a href="#" class="active">Home</a></li>
             <li><a href="#">Recommendation</a></li>
             <li><a href="#">Favourites</a></li>
             <li><a href="#">About</a></li>
         </ul>
     </nav>
 
+    <!-- ===== HERO SECTION ===== -->
     <section class="heroSection">
         <div class="hero-container">
             <h1>Welcome to MovieMate</h1>
             <p>Your Ultimate Movie Recommendation System</p>
 
-            <input type="text" id="movieInput" placeholder="Enter a movie name">
-            <button id="recommendBtn" class="btn">Get Recommendations</button>
+            <div class="search-bar">
+                <input type="text" id="movieInput" placeholder="Enter a movie name">
+                <button id="recommendBtn" class="btn">Get Recommendations</button>
+            </div>
 
             <div id="recommendations" class="recommendations"></div>
         </div>
     </section>
 
+    <!-- ===== FOOTER ===== -->
     <footer>
         <div class="footer-container">
             <div class="footer-section about">

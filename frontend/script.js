@@ -1,43 +1,66 @@
-const apiBase = "http://127.0.0.1:8000/recommend";
+document.addEventListener("DOMContentLoaded", () => {
+  const input = document.getElementById("movieInput");
+  const btn = document.getElementById("recommendBtn");
+  const recommendations = document.getElementById("recommendations");
+  const navLinks = document.querySelectorAll(".nav ul li a");
 
-document.getElementById("recommendBtn").addEventListener("click", async () => {
-  const movieName = document.getElementById("movieInput").value.trim();
-  const recommendationsDiv = document.getElementById("recommendations");
-  recommendationsDiv.innerHTML = "";
-
-  if (!movieName) {
-    recommendationsDiv.innerHTML = "<p>Please enter a movie name!</p>";
-    return;
-  }
-
-  try {
-    const response = await fetch(apiBase, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ movie_name: movieName }),
+  // 🎬 Navbar active animation
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.forEach(l => l.classList.remove("active"));
+      link.classList.add("active");
     });
+  });
 
-    if (!response.ok) throw new Error("Backend error");
+  // 🎞 Search button click
+  btn.addEventListener("click", async () => {
+    const movieName = input.value.trim();
+    if (!movieName) return alert("Please enter a movie name!");
 
-    const data = await response.json();
-    const movies = data.recommended_movies;
+    recommendations.innerHTML = `<p style="color:#aaa;text-align:center;">Loading recommendations...</p>`;
 
-    if (!movies.length) {
-      recommendationsDiv.innerHTML = "<p>No recommendations found!</p>";
-      return;
+    try {
+      const res = await fetch(`https://www.omdbapi.com/?s=${movieName}&apikey=564727fa`);
+      const data = await res.json();
+
+      if (data.Response === "False") {
+        recommendations.innerHTML = `<p style="color:#E50914;text-align:center;">No movies found. Try another name!</p>`;
+        return;
+      }
+
+      recommendations.innerHTML = "";
+
+      data.Search.forEach(movie => {
+        let poster = movie.Poster && movie.Poster !== "N/A"
+          ? movie.Poster
+          : "https://via.placeholder.com/300x450/000000/FFFFFF?text=No+Poster";
+
+        const movieCard = document.createElement("div");
+        movieCard.classList.add("movie-card");
+
+        movieCard.innerHTML = `
+          <img src="${poster}" alt="${movie.Title}">
+          <h3>${movie.Title}</h3>
+          <p>${movie.Year}</p>
+        `;
+
+        // ✅ Fallback in case poster URL is broken (404 or invalid)
+        const img = movieCard.querySelector("img");
+        img.onerror = () => {
+          img.src = "https://via.placeholder.com/300x450/000000/FFFFFF?text=No+Poster";
+        };
+
+        // ✨ Smooth fade-in
+        movieCard.style.opacity = "0";
+        recommendations.appendChild(movieCard);
+        requestAnimationFrame(() => {
+          movieCard.style.transition = "opacity 0.6s ease-in";
+          movieCard.style.opacity = "1";
+        });
+      });
+    } catch (error) {
+      console.error(error);
+      recommendations.innerHTML = `<p style="color:#E50914;text-align:center;">Error fetching movies. Try again later.</p>`;
     }
-
-    movies.forEach((movie) => {
-      const movieCard = document.createElement("div");
-      movieCard.classList.add("movie-card");
-      movieCard.innerHTML = `
-        <img src="${movie.poster}" alt="${movie.title}">
-        <h3>${movie.title}</h3>
-      `;
-      recommendationsDiv.appendChild(movieCard);
-    });
-  } catch (error) {
-    console.error(error);
-    recommendationsDiv.innerHTML = "<p>Something went wrong. Try again!</p>";
-  }
+  });
 });
