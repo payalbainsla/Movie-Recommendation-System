@@ -43,7 +43,7 @@ Movie-Recommendation-System/
 │   ├── movie_dict.pkl        # Movie data dictionary
 │   ├── similarity.pkl        # Similarity matrix
 │   ├── requirements.txt      # Dependencies
-│   └── data_preprocessing.py # For dataset updates
+│   └── recommendation.ipynb # Recommendation code
 │
 ├── frontend/
 │   ├── index.html            # Home page
@@ -143,11 +143,11 @@ Response:
 ```
 fastapi
 uvicorn
+pydantic
 scikit-learn
 pandas
 numpy
 requests
-python-dotenv
 ```
 
 Install all via:
@@ -214,6 +214,17 @@ git push
 ### 🔄 Future Plan: Dynamic Movie Data
 
 We plan to shift to **OMDb API-based live fetching**, so data always stays up-to-date without manual updates.
+
+---
+
+## 🙌 Contributors & Recognition
+
+We appreciate everyone who contributed to building **MovieMate** 💖
+
+| Name       | Role               | Contribution                                                  |
+| ---------- | ------------------ | ------------------------------------------------------------- |
+| **Payal**  | Frontend Developer | Designed and developed the UI and user experience.            |
+| **Kumkum** | Backend Developer  | Built and optimized FastAPI backend and recommendation logic. |
 
 ---
 
