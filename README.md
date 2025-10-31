@@ -1,31 +1,25 @@
-# 🎬 MovieMate: The Smart Movie Recommendation System
+# 🎬 MovieMate: A Movie Recommendation System
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)]()
-[![Contributions Welcome](https://img.shields.io/badge/Contributions-welcome-brightgreen.svg?style=flat)]()
 
----
-
-## 🌟 Overview
-
-**MovieMate** is an intelligent and interactive **Movie Recommendation System** built using **FastAPI** for the backend and **HTML/CSS/JavaScript** for the frontend.
-It combines AI-driven filtering methods and prompt-based intelligence to deliver highly personalized movie suggestions.
-
-Whether you want to discover movies based on your **mood**, **storyline**, or even through **voice commands**, MovieMate has you covered. 🎥✨
+A powerful **Movie Recommendation System** built using **FastAPI** (for backend) and **HTML/CSS/JS** (for frontend).
+It recommends movies similar to the one selected by the user using **content-based filtering** and other intelligent features.
 
 ---
 
 ## 🚀 Features
 
-* 🎬 **Prompt-Based Search** – Search for movies using natural language prompts (e.g., “funny space movies”).
-* 🎭 **Mood-Based Recommendation** – Get movie suggestions that match your mood or emotion.
-* 🔊 **Voice-Based Search** – Use your voice to find and explore movies.
-* 🤝 **Collaborative & Hybrid Filtering** – Smart algorithm combining content and user preference models.
-* 📈 **Trending & Social Layer** – See what’s popular among the community.
-* 📖 **Storyline-Based Search** – Find movies with similar storylines using NLP.
-* ⚡ **FastAPI Backend** – Lightning-fast recommendations powered by Python.
-* 💅 **Beautiful Frontend** – Clean and responsive UI built with HTML, CSS, and JavaScript.
-* 🖼️ **OMDB API Integration** – Fetches posters.
+* 🎥 **Similar Movie Recommendations** based on cosine similarity.
+* 🧠 **Prompt-Based Search** – Search movies with natural language queries (e.g., “funny space adventure”).
+* 💬 **Storyline-Based Search** – Recommend movies based on story or description.
+* 😄 **Mood-Based Recommendations** – Suggest movies based on mood or emotions.
+* 🎤 **Voice-Based Search** – Search movies using your voice.
+* 🔥 **Trending & Social Layer** – Display popular and trending movies.
+* 🎬 **Movie Overview Feature** – Shows a short description, rating, genre, and cast using **OMDb API**.
+* 🔄 **Hybrid & Collaborative Filtering** – Combine user and content preferences for better recommendations.
+* 💾 **Dynamic Data Updating** – Contributors can add or update movie data for continuous improvement.
+* ⚡ Backend powered by FastAPI with instant responses.
+* 💅 Clean, responsive frontend built with HTML & CSS.
 
 ---
 
@@ -34,29 +28,32 @@ Whether you want to discover movies based on your **mood**, **storyline**, or ev
 * **Backend:** Python (FastAPI)
 * **Frontend:** HTML, CSS, JavaScript
 * **Libraries:** pandas, numpy, scikit-learn, requests
+* **API:** [OMDb API](https://www.omdbapi.com/) for fetching movie details & overviews
 * **Data Files:** `movie_dict.pkl`, `similarity.pkl`
-* **API:** OMDB API
 
 ---
 
 ## 🗂️ Project Structure
 
 ```
-MovieMate/
+Movie-Recommendation-System/
 │
 ├── backend/
 │   ├── main.py               # FastAPI backend
 │   ├── movie_dict.pkl        # Movie data dictionary
 │   ├── similarity.pkl        # Similarity matrix
 │   ├── requirements.txt      # Dependencies
-│   └── recommendation.ipynb  # recommendation code
+│   └── data_preprocessing.py # For dataset updates
 │
 ├── frontend/
-│   ├── index.html            # Frontend interface
+│   ├── index.html            # Home page
+│   ├── recommendation.html   # Recommendation page
+│   ├── favourites.html       # Favourite movies page
+│   ├── about.html            # About project page
 │   ├── style.css             # Styling
-│   ├── script.js             # Dynamic search & API integration
+│   └── script.js             # Frontend interactivity
 │
-└── README.md                 # Project overview
+└── README.md
 ```
 
 ---
@@ -66,8 +63,8 @@ MovieMate/
 ### 🧩 Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/<your-username>/MovieMate.git
-cd MovieMate/backend
+git clone https://github.com/<your-username>/Movie-Recommendation-System.git
+cd Movie-Recommendation-System/backend
 ```
 
 ### 🧠 Step 2: Create & Activate Virtual Environment
@@ -88,23 +85,34 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 🚀 Step 4: Run the FastAPI Server
+### 🔑 Step 4: Setup OMDb API Key
+
+1. Visit [https://www.omdbapi.com/apikey.aspx](https://www.omdbapi.com/apikey.aspx) and get your free API key.
+2. Add it to your `.env` file or directly in your code:
+
+```python
+OMDB_API_KEY = "your_api_key_here"
+```
+
+### 🚀 Step 5: Run the FastAPI Server
 
 ```bash
 uvicorn main:app --reload
 ```
 
-Your backend server will start at:
+When it starts, you’ll see something like:
 
 ```
-http://127.0.0.1:8000
+INFO:     Uvicorn running on http://127.0.0.1:8000
 ```
 
-### 🌐 Step 5: Run Frontend
+---
 
-* Open `frontend/index.html` in your browser or use VS Code Live Server.
-* Ensure the backend server is running.
-* Search or speak to find movie recommendations instantly 🎬
+## 🌐 Step 6: Run Frontend
+
+* Open `frontend/index.html` in your browser.
+* Make sure the backend (FastAPI server) is running.
+* Search or select a movie → get recommendations instantly 🎬
 
 ---
 
@@ -135,14 +143,14 @@ Response:
 ```
 fastapi
 uvicorn
-pydantic
 scikit-learn
 pandas
 numpy
 requests
+python-dotenv
 ```
 
-Install them with:
+Install all via:
 
 ```bash
 pip install -r requirements.txt
@@ -150,174 +158,74 @@ pip install -r requirements.txt
 
 ---
 
-# 🤝 How to Contribute
+## 🧩 Contributing
 
-Thank you for your interest in contributing to **MovieMate** — an open-source AI-powered movie recommendation system! 💖
-We welcome all kinds of contributions — from fixing bugs 🐞 and improving code 💻 to writing documentation 📚 or suggesting new features 💡.
+We welcome contributions from everyone 💡!
+Here’s how you can help:
 
-### 🧭 Steps to Contribute
+### 🔹 How to Contribute
 
-#### 🪄 1. Fork the Repository
+1. **Fork** this repository to your GitHub account.
+2. **Clone** your fork locally and create a new branch.
+3. **Make changes** — improve code, fix bugs, add features.
+4. **Commit and push** your branch.
+5. **Create a Pull Request (PR)** to the main repository.
+6. Wait for review & merge approval.
 
-* Click the **“Fork”** button at the top-right of this repo.
-* This creates your personal copy of the project.
+You don’t need main repo access — all changes go via PRs ✅.
 
-#### 🌿 2. Clone Your Fork
+### 🔹 Areas to Contribute
+
+* 🧠 **Prompt-Based Search** – Improve NLP query understanding.
+* 🎭 **Mood-Based Recommendations** – Enhance emotion recognition.
+* 🎤 **Voice Search** – Add multi-language or improved recognition.
+* 🔗 **Hybrid & Collaborative Filtering** – Tune algorithms for better accuracy.
+* 🎬 **Movie Overview Feature** – Improve OMDb integration to show cast, genre, poster, and ratings.
+* 💾 **Dataset Enhancement** – Add new movies or update metadata.
+* 🧩 **Frontend Pages** – Complete or improve following pages:
+
+  * **Home Page:** Search bar and intro (already functional).
+  * **Recommendation Page:** Show recommended movies with overviews, trailers, and ratings.
+  * **Favourites Page:** Save and manage liked movies.
+  * **About Page:** Add project details, team info, and API credits.
+* 🧪 **Testing & Bug Fixes** – Test features and fix UI/backend issues.
+
+---
+
+## 🎥 Contributing Movie Data
+
+Contributors can also help improve or expand the movie dataset:
+
+### 📁 Updating Movie Data
+
+1. Modify or replace `movie_dict.pkl` and `similarity.pkl` using `data_preprocessing.py`.
+2. Generate new files locally and test recommendations.
+3. Commit the updated files and open a pull request.
+
+Example:
 
 ```bash
-git clone https://github.com/<your-username>/MovieMate.git
-cd MovieMate
+python data_preprocessing.py
+git add backend/movie_dict.pkl backend/similarity.pkl
+git commit -m "Updated dataset with 100 new movies"
+git push
 ```
 
-#### 🌱 3. Create a New Branch
+### 🔄 Future Plan: Dynamic Movie Data
 
-Create a separate branch for your work:
-
-```bash
-git checkout -b feature-name
-```
-
-> Example: `git checkout -b add-mood-recommendation`
-
-#### 💻 4. Make Your Changes
-
-* Add your code, tests, or documentation improvements.
-* Follow the existing project structure and naming conventions.
-* Make sure your code runs without errors.
-
-#### 🧪 5. Test Your Work
-
-Before submitting, test your changes locally to ensure everything works as expected.
-
-#### 📝 6. Commit Your Changes
-
-Use clear and concise commit messages:
-
-```bash
-git add .
-git commit -m "Added mood-based movie recommendation feature"
-```
-
-#### 🚀 7. Push to Your Fork
-
-```bash
-git push origin feature-name
-```
-
-#### 🔁 8. Create a Pull Request (PR)
-
-* Go to your fork on GitHub.
-* Click **“Compare & pull request”**.
-* Describe your changes and submit the PR.
+We plan to shift to **OMDb API-based live fetching**, so data always stays up-to-date without manual updates.
 
 ---
 
-## 🧩 Areas You Can Contribute To
+## 👐 Open Source
 
-| Area                                | Description                                 |
-| ----------------------------------- | ------------------------------------------- |
-| 🧠 Prompt-Based Search              | Improve AI-based movie search prompts.      |
-| 🎭 Mood-Based Recommendation        | Enhance emotion-based recommendations.      |
-| 🔊 Voice Search                     | Add or improve voice control.               |
-| 🔗 Hybrid & Collaborative Filtering | Optimize recommendation algorithms.         |
-| 📈 Trending & Social Layer          | Integrate social APIs for trending content. |
-| 📖 Storyline Search                 | Improve NLP-based story matching.           |
-| 🐞 Bug Fixes                        | Fix UI/UX or backend issues.                |
-| 📝 Documentation                    | Enhance setup and usage instructions.       |
-| 🎬 Movie Dataset Updates            | Add, clean, or enhance movie data.          |
-
----
-
-# 🎞️ Contributing Movie Data
-
-MovieMate’s recommendations are powered by movie data stored in `movie_dict.pkl` and `similarity.pkl`.
-These files can be **updated, expanded, or replaced** by contributors to include new movies or improve similarity accuracy.
-
-### 🧰 Updating Existing Data
-
-1. Download or clone the repository.
-2. Open the `backend/data_preprocessing.py` script (or create one if missing).
-3. Add your new movie data (from TMDB API, CSV, etc.).
-4. Re-run the script to regenerate `.pkl` files:
-
-   ```bash
-   python data_preprocessing.py
-   ```
-5. Replace old files with the new ones:
-
-   ```bash
-   git add backend/movie_dict.pkl backend/similarity.pkl
-   git commit -m "Updated movie dataset with 200 new titles"
-   ```
-6. Push and create a pull request.
-
-### 🌍 Dynamic Data (Future Enhancement)
-
-In future versions, MovieMate will support **dynamic data fetching** from external APIs like TMDB.
-That means contributors won’t need to update `.pkl` files manually — the system will fetch new or trending movies automatically.
-
-Example snippet:
-
-```python
-import requests
-url = f"https://api.themoviedb.org/3/trending/movie/week?api_key={API_KEY}"
-movies = [m['title'] for m in requests.get(url).json()['results']]
-```
-
-✅ **Short-Term Plan:** Contributors update `.pkl` files manually.
-🚀 **Long-Term Vision:** Full API-based dynamic dataset updates.
-
----
-
-## 🧰 Development Guidelines
-
-* Write **clean, modular, and documented** code.
-* Use meaningful commit messages.
-* Avoid pushing large files or unnecessary data.
-* Test before submitting PRs.
-
----
-
-## 💬 Communication
-
-If you have questions or ideas:
-
-* Open a new [Issue](../../issues)
-* Start a discussion in the **Discussions** tab
-* Or comment directly on pull requests
-
----
-
-## 🌟 Recognition
-
-All contributors will be featured in the **Contributors section** once their PRs are merged.
-We truly appreciate your efforts and support! 🙌
-
----
-
-## 🧩 Future Enhancements
-
-* 🗣️ Integration with GPT-based movie Q&A system
-* 📱 Full React.js frontend redesign
-* 🌍 Multi-language recommendations
-* 💾 User profiles and watch history tracking
-* 🎞️ Recommendation visualization dashboard
-
----
-
-## 👐 Open Source & Community
-
-This project is **open-source** 💻 under the **MIT License**.
-Feel free to use, modify, and improve it — just give proper credit.
-
-We encourage everyone to join and collaborate!
-Tag your first contribution with **`good first issue`** 🪄
+This project is **open-source** 💻
+Feel free to use, modify, and improve it with proper credits.
+Pull requests are welcome!
 
 ---
 
 ## ✨ Author
 
 **Code Catalyst**
-*2025 © MovieMate | All Rights Reserved*
-
-> “Movies bring people together. Let’s make discovering them smarter.” 🎬💫
+Movie Recommendation System | 2025
