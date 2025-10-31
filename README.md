@@ -25,7 +25,7 @@ Whether you want to discover movies based on your **mood**, **storyline**, or ev
 * 📖 **Storyline-Based Search** – Find movies with similar storylines using NLP.
 * ⚡ **FastAPI Backend** – Lightning-fast recommendations powered by Python.
 * 💅 **Beautiful Frontend** – Clean and responsive UI built with HTML, CSS, and JavaScript.
-* 🖼️ **TMDB API Integration** – Fetches posters, overviews, and movie details.
+* 🖼️ **OMDB API Integration** – Fetches posters.
 
 ---
 
@@ -35,7 +35,7 @@ Whether you want to discover movies based on your **mood**, **storyline**, or ev
 * **Frontend:** HTML, CSS, JavaScript
 * **Libraries:** pandas, numpy, scikit-learn, requests
 * **Data Files:** `movie_dict.pkl`, `similarity.pkl`
-* **API:** TMDB API
+* **API:** OMDB API
 
 ---
 
@@ -48,15 +48,13 @@ MovieMate/
 │   ├── main.py               # FastAPI backend
 │   ├── movie_dict.pkl        # Movie data dictionary
 │   ├── similarity.pkl        # Similarity matrix
-│   ├── data_preprocessing.py # Data update/generation script
 │   ├── requirements.txt      # Dependencies
-│   └── utils/                # Helper functions (future expansion)
+│   └── recommendation.ipynb  # recommendation code
 │
 ├── frontend/
 │   ├── index.html            # Frontend interface
 │   ├── style.css             # Styling
 │   ├── script.js             # Dynamic search & API integration
-│   └── assets/               # Icons, images, posters
 │
 └── README.md                 # Project overview
 ```
@@ -137,6 +135,7 @@ Response:
 ```
 fastapi
 uvicorn
+pydantic
 scikit-learn
 pandas
 numpy
